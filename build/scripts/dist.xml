@@ -32,7 +32,7 @@
     <!-- Create .war file                                                   -->
     <!-- ================================================================== -->
     <target name="dist-war" depends="webapps,svn-prepare" description="Create war file">
-        <war destfile="${dist}/exist-${project.version}-rev${svn.revision}.war" webxml="webapp/WEB-INF/web.xml">
+        <war destfile="${dist}/exist.war" webxml="webapp/WEB-INF/web.xml">
                 
             <!-- Add files to WEB-INF/lib -->
             <lib dir=".">
@@ -64,7 +64,7 @@
                 <include name="*.jar"/>
             </lib>
             <!-- Include spatial jars, when available -->
-            <lib dir="extensions/indexes/spatial/lib">
+            <lib dir="extensions/indexes/spatial/lib" erroronmissingdir="false">
                 <include name="*.jar"/>
             </lib>
             <!-- Include xqdoc jar, needed for xquery function documentation -->
@@ -77,7 +77,7 @@
                 <include name="*.jar"/>
             </lib>
             <!-- Include betterform jars  -->
-            <lib dir="extensions/betterform/main/lib">
+            <lib dir="extensions/betterform/main/lib" erroronmissingdir="false">
                 <include name="*.jar"/>
             </lib>
             <!-- Include the AspectJ runtime jar -->
@@ -134,9 +134,9 @@
                 <exclude name="**/*.log*"/>
             </fileset>
             <!-- Betterform -->
-            <zipfileset dir="extensions/betterform/main/xrx/"  prefix="betterform/samples/xrx">
+            <!--zipfileset dir="extensions/betterform/main/xrx/"  prefix="betterform/samples/xrx">
                 <include name="**/*"/>
-            </zipfileset>
+            </zipfileset-->
             <zipfileset dir="samples" prefix="samples">
                 <include name="**"/>
                 <exclude name="**/*~"/>

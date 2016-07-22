@@ -10,7 +10,7 @@
     <!-- import default properties from file -->
     <property file="local.build.properties"/>
     <property file="build.properties"/>
-    
+
     <!-- set proxy if needed, use properties in build.properties  -->
     
     <setproxy nonproxyhosts="${proxy.nonproxyhosts}" proxyhost="${proxy.host}" proxyport="${proxy.port}"

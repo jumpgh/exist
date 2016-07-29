@@ -80,6 +80,7 @@
             <!-- Include betterform jars  -->
             <lib dir="extensions/betterform/main/lib">
                 <include name="*.jar"/>
+                <exclude name="betterform-exist-5.1-SNAPSHOT-20160615.jar"/>
             </lib>
             <!-- Include the AspectJ runtime jar -->
             <lib dir="${tools.aspectj}/lib">

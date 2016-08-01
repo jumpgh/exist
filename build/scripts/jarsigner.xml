@@ -23,9 +23,10 @@
     <description>Sign jarfiles for eXist webstart application</description>
     
     <!-- Set sign properties -->
-    <property name="keystore.alias" value="exist"/>
+    <property name="keystore.alias" value="1"/>
     <property name="keystore.password" value="secret"/>
     <property name="keystore.file" value="key.store"/>
+    <property name="keystore.keypass" value="carpet"/>
     <property name="keystore.validity" value="100000"/>
     
     <!-- Check wether the keystore already exists -->
@@ -48,7 +49,7 @@
             depends="jnlp-prepare,jnlp-keygen">
         
         <signjar alias="${keystore.alias}" storepass="${keystore.password}"
-                 keystore="${keystore.file}">
+                 keystore="${keystore.file}" keypass="${keystore.keypass}">
             <fileset dir=".">
                 <include name="exist*.jar"/>
                 <include name="start.jar"/>
@@ -61,7 +62,7 @@
             depends="jnlp-prepare,jnlp-keygen">
         
         <signjar alias="${keystore.alias}" storepass="${keystore.password}"
-                 keystore="${keystore.file}">
+                 keystore="${keystore.file}" keypass="${keystore.keypass}">
             <fileset dir="lib/core">
                 <include name="*.jar"/>
             </fileset>

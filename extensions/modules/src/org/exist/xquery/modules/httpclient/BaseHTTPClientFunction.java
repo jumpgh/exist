@@ -507,6 +507,26 @@ public abstract class BaseHTTPClientFunction extends BasicFunction
                         
                         builder.characters(URLEncoder.encode(EncodingUtil.getString(baos.toByteArray(), ((HttpMethodBase)method).getResponseCharSet()), "UTF-8"));
                         baos.close();
+                    } 
+                    /* added by vovka
+                    *  for handling json responces as UTF-8 strings
+                    */
+                    else if(responseMimeType.getName().endsWith("json")) {
+
+                        // Assume it's a text body and URL encode it
+                        builder.addAttribute(new QName("type", null, null), "text");
+                        builder.addAttribute(new QName("encoding", null, null), "UTF-8");
+
+                        //logger.info("I get json!!!");
+                        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        final byte buf[] = new byte[4096];
+                        int read = -1;
+                        while((read = cfis.read(buf)) > -1) {
+                            baos.write(buf, 0, read);
+                        }
+
+                        builder.characters(EncodingUtil.getString(baos.toByteArray(), "UTF-8"));
+                        baos.close();
                     } else {
 
                         // Assume it's a binary body and Base64 encode it

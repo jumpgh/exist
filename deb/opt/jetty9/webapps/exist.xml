@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+
+<Configure id='wac' class="org.eclipse.jetty.webapp.WebAppContext">
+
+  <Set name="contextPath">/exist</Set>
+  <Set name="war"><Property name="jetty.webapps" default="."/>/exist.war</Set>
+  <Set name="extractWAR">true</Set>
+  
+  <Get name="securityHandler">
+    <Set name="loginService">
+      <New class="org.eclipse.jetty.security.HashLoginService">
+        <Set name="name">eXist-db</Set>
+        <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+            <!-- To enable reload of realm when properties change, uncomment the following lines -->
+            <!-- changing refreshInterval (in seconds) as desired                                -->
+            <!--
+           <Set name="refreshInterval">5</Set>
+           <Call name="start"></Call>
+           -->
+      </New>
+    </Set>
+    <Set name="authenticator">
+      <New class="org.eclipse.jetty.security.authentication.FormAuthenticator">
+        <Set name="alwaysSaveUri">true</Set>
+      </New>
+    </Set>
+    <Set name="checkWelcomeFiles">true</Set>
+  </Get>
+
+</Configure>

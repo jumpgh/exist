@@ -144,6 +144,13 @@ public class Log4jInit extends HttpServlet {
         final File log4jConfigFile = new File(existDir, "WEB-INF/TMPfile.xml");
         convertLogFile(srcConfigFile, log4jConfigFile, logsdir);
         
+        // Delete source log4j configuration file
+        if(srcConfigFile.delete()){
+                System.out.println("Deleted source log4j configuration file " + srcConfigFile.getAbsolutePath());
+            }else{
+                System.out.println("Can't delete source log4j configuration file " + srcConfigFile.getAbsolutePath());
+            }
+            
         System.out.println(getTimestamp() + " - eXist log4j configuration=" 
                 + log4jConfigFile.getAbsolutePath());
 

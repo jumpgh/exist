@@ -8,7 +8,6 @@ classes/
 client.properties
 conf.xml
 data/
-deb/opt/jetty9/webapps/exist.war
 descriptor.xml
 dist/
 eXist.iws

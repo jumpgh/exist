@@ -28,4 +28,7 @@
     <Set name="checkWelcomeFiles">true</Set>
   </Get>
 
+  <Set name="tempDirectory">/var/lib/jetty9/work/exist</Set>
+  <Set name="persistTempDirectory">true</Set>
+
 </Configure>

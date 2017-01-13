@@ -8,9 +8,9 @@
     <xsl:template match="category[@name='org.mortbay']">
     </xsl:template>
 
-    <xsl:template match="appender/param[@name='File']">
+<!--     <xsl:template match="appender/param[@name='File']">
         <param name="File" value="loggerdir/{substring-after(@value,'logs/')}"/>
-    </xsl:template>
+    </xsl:template> -->
 
     <xsl:template match="*|@*|node()|comment()">
         <xsl:copy>

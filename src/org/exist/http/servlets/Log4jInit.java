@@ -122,34 +122,33 @@ public class Log4jInit extends HttpServlet {
         final String file   = getInitParameter("log4j-init-file");
 		String logdir = getInitParameter("log4j-log-dir");
 		
-		if( logdir == null ) {
-			// Use default location for exist logs if not specified in web.xml
-			logdir = "WEB-INF/logs";
-		}
+		// if( logdir == null ) {
+		// 	// Use default location for exist logs if not specified in web.xml
+		// 	logdir = "WEB-INF/logs";
+		// }
         
         // Get path where eXist is running
         final String existDir =  getServletContext().getRealPath("/");
         
         // Define location of logfiles
-        final File logsdir = new File(existDir, logdir );
-        logsdir.mkdirs();
+        // final File logsdir = new File(existDir, logdir );
+        // logsdir.mkdirs();
         
-        System.out.println(getTimestamp() + " - eXist logs dir="
-                + logsdir.getAbsolutePath());
+        System.out.println(getTimestamp() + " - eXist logs dir=" + logdir);
         
         // Get log4j configuration file
-        final File srcConfigFile = new File(existDir,file);
+        final File log4jConfigFile = new File(existDir,file);
         
         // Convert
-        final File log4jConfigFile = new File(existDir, "WEB-INF/TMPfile.xml");
-        convertLogFile(srcConfigFile, log4jConfigFile, logsdir);
+        // final File log4jConfigFile = new File(existDir, "WEB-INF/TMPfile.xml");
+        // convertLogFile(srcConfigFile, log4jConfigFile, logsdir);
         
         // Delete source log4j configuration file
-        if(srcConfigFile.delete()){
-                System.out.println("Deleted source log4j configuration file " + srcConfigFile.getAbsolutePath());
-            }else{
-                System.out.println("Can't delete source log4j configuration file " + srcConfigFile.getAbsolutePath());
-            }
+        // if(srcConfigFile.delete()){
+        //         System.out.println("Deleted source log4j configuration file " + srcConfigFile.getAbsolutePath());
+        //     }else{
+        //         System.out.println("Can't delete source log4j configuration file " + srcConfigFile.getAbsolutePath());
+        //     }
             
         System.out.println(getTimestamp() + " - eXist log4j configuration=" 
                 + log4jConfigFile.getAbsolutePath());

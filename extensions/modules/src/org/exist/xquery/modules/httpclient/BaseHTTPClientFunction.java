@@ -445,8 +445,9 @@ public abstract class BaseHTTPClientFunction extends BasicFunction
                     // text or binary here below
                     final String msg = "Request for URI '"
                         + method.getURI().toString()
-                        + "' Could not parse http response content as XML (will try html, text or fallback to binary): "
-                        + se.getMessage();
+                        + "' Could not parse http response content as XML (will try html, text, json or fallback to binary): "
+                        + se.getMessage()
+                        + " Ignore this message if id-service was requested.";
                     if(logger.isDebugEnabled()) {
                         logger.debug(msg, se);
                     } else {
